@@ -1,0 +1,101 @@
+[gd_scene format=3 uid="uid://441yvtup0ufk"]
+
+[ext_resource type="Script" uid="uid://cep7ng5u5doax" path="res://scripts/hud.gd" id="1_64ctp"]
+[ext_resource type="FontFile" uid="uid://cea7hpmj75cp5" path="res://fonts/Xolonium-Regular.ttf" id="2_8sq4i"]
+
+[sub_resource type="InputEventAction" id="InputEventAction_272bh"]
+action = &"start_game"
+
+[sub_resource type="Shortcut" id="Shortcut_7mycd"]
+events = [SubResource("InputEventAction_272bh")]
+
+[node name="HUD" type="CanvasLayer" unique_id=1535031377]
+script = ExtResource("1_64ctp")
+
+[node name="HighScoreLabel" type="Label" parent="." unique_id=1369429835]
+anchors_preset = -1
+anchor_left = 0.004166667
+anchor_right = 0.55833334
+anchor_bottom = 0.08055556
+offset_left = 4.0
+offset_top = 46.0
+offset_right = 4.0
+offset_bottom = 46.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("2_8sq4i")
+theme_override_font_sizes/font_size = 48
+text = "Рекорд: 0"
+metadata/_edit_use_anchors_ = true
+
+[node name="ScoreLabel" type="Label" parent="." unique_id=1686937103]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -17.0
+offset_right = 17.0
+offset_bottom = 58.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_8sq4i")
+theme_override_font_sizes/font_size = 48
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DifficultyLabel" type="Label" parent="." unique_id=1975647044]
+anchors_preset = -1
+anchor_left = 0.020833334
+anchor_top = 0.13611111
+anchor_right = 0.60625
+anchor_bottom = 0.21666667
+offset_left = 14.0
+offset_top = -5.0
+offset_right = 14.0
+offset_bottom = -5.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_8sq4i")
+theme_override_font_sizes/font_size = 48
+text = "Уровень: 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Message" type="Label" parent="." unique_id=2117398463]
+anchors_preset = -1
+anchor_left = -0.00625
+anchor_top = 0.325
+anchor_right = 0.99375
+anchor_bottom = 0.54583335
+offset_top = 1.5258789e-05
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_8sq4i")
+theme_override_font_sizes/font_size = 64
+text = "Спасайся от монстров!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="StartButton" type="Button" parent="." unique_id=1921873696]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -139.5
+offset_top = -140.0
+offset_right = 139.5
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_8sq4i")
+theme_override_font_sizes/font_size = 64
+shortcut = SubResource("Shortcut_7mycd")
+text = "Начать!"
+
+[node name="MessageTimer" type="Timer" parent="." unique_id=1971962778]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="timeout" from="MessageTimer" to="." method="_on_message_timer_timeout"]
